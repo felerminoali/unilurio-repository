@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UniLurio Repository</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!--    bootstrap css-->
+
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--    css -->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/datatables/1.10.20/css/dataTables.bootstrap.min.css">
+
+    <!--    awesome font-->
+    <link rel="stylesheet" href="webjars/font-awesome/5.12.0/css/fontawesome.min.css">
+
+    <!-- Custom Theme files -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!--    bootstrap js-->
+    <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!--    datatables js-->
+    <script src="webjars/datatables/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script src="dashboard.js"></script>
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/oauth">Início</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#formSyncModal" >Sincronizar</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#"><i class="fa fa-createdby"></i>Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br/>
+<br/>
+<br/>
+
+<div class="container-fluid">
+
+    <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="panel panel-success">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Sincronizar Documentos</div>
+
+                    <div class="panel-body">
+                        <div id="remove-message"></div>
+                        <div class="result">
+
+
+                            <div class="row">
+
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="filter_name">Título </label>
+                                        <input type="text" class="form-control" id="filter_name" name="filter_name"
+                                               autocomplete="off">
+                                    </div>
+                                </div><!-- /.col-lg-6 -->
+
+
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="filter_year">Ano</label>
+                                        <select class="form-control" name="filter_year" id="filter_year">
+                                        </select>
+                                    </div>
+                                </div><!-- /.col-lg-6 -->
+
+
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="filter_category">Categoria </label>
+                                        <select class="form-control" name="filter_category" id="filter_category">
+                                        </select>
+                                    </div>
+                                </div><!-- /.col-lg-6 -->
+
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="filter"></label>
+                                        <button type="button" name="filter" id="filter" class="form-control btn btn-info">
+                                            Filtrar
+                                        </button>
+                                    </div>
+
+                                </div><!-- /.col-lg-6 -->
+                            </div>
+
+                            <br/>
+                            <table class="table table-hover" id="tblfiles" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Ano</th>
+                                    <th>Título</th>
+                                    <!--<th>Documento Principal</th>-->
+                                    <th>Documentos Anexos</th>
+                                    <th>Acções</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /col-md-8 -->
+
+
+        <!-- create View modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="formViewModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <form id="form">
+                        <!--<input type="number" class="hidden" id="id" name="id" value="0"/>-->
+
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <iframe src="https://drive.google.com/file/d/0B-dOo9jrft_6ZHcwZXNGa0xxblk/view" width="640" height="440"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="closeModal" data-dismiss="modal">
+                                Fechar
+                            </button>
+                            <button class="btn btn-primary" id="btn-save">Gravar</button>
+                        </div>
+
+                    </form>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- create View modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="formSyncModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <form id="formSync">
+                        <div class="modal-body">
+                            <!--<div class="panel panel-default">-->
+
+                                <div class="row">
+                                    <div class="col-lg-offset-5 col-lg-2">
+                                        <div class="form-group">
+                                            <label for="syncronize"></label>
+                                            <button type="button" name="syncronize" id="syncronize"
+                                                    class="form-control btn btn-warning">
+                                                Sincronizar
+                                            </button>
+                                        </div>
+                                    </div><!-- /.col-lg-6 -->
+
+                                    <div class="col-lg-12">
+
+                                        <div id="syncfiles" class="hidden">
+
+                                            <br>
+
+
+                                            <button class="btn btn-default pull-right" id="btnAddAll">Adicionar Todos</button>
+
+                                            <table class="table table-hover" id="tblsync" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>Título</th>
+                                                    <th class="text-center">Acções</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div><!-- /.row -->
+
+                            <!--</div>-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Fechar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- create Editar modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="formEditarModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <form id="formEditar" >
+                        <input type="number" class="hidden" id="id" name="id"/>
+                        <input type="hidden" id="document" name="document"/>
+                        <input type="hidden" id="url" name="url"/>
+
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <legend>Detalhes do Documento</legend>
+
+                                            <div class="form-group">
+                                                <label for="googleid">Google ID</label>
+                                                <input type="text" class="form-control" name="googleId" id="googleId"
+                                                       placeholder="Nome" autocomplete="off">
+                                                <span class="help-block"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="title">Título</label>
+                                                <input type="text" class="form-control" name="title" id="title" autocomplete="off">
+                                                <span class="help-block"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="year">Ano</label>
+                                                <select class="form-control" name="year" id="year">
+                                                </select>
+                                                <span class="help-block"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="category">Categoria</label>
+                                                <select class="form-control" name="category" id="category">
+                                                </select>
+                                                <span class="help-block"></span>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="type">Tipo</label>
+                                                <select class="form-control" name="type" id="type">
+                                                </select>
+                                                <span class="help-block"></span>
+                                            </div>
+
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <legend>Anexos</legend>
+
+                                            <div class="row">
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label for="category">Anexo</label>
+                                                        <select class="form-control" name="attachment" id="attachment">
+                                                        </select>
+                                                        <span class="help-block"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label></label>
+                                                        <button class="btn btn-default">Adicionar</button>
+                                                        <span class="help-block"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <table class="table table-hover" id="tblAttachments" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>Ano</th>
+                                                    <th>Título</th>
+                                                    <th>Documento Principal</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Fechar
+                            </button>
+                            <button class="btn btn-primary" id="btn-save-editar">Gravar</button>
+                        </div>
+
+                    </form>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div>
+</div>
+</body>
+</html>

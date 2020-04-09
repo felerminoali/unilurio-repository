@@ -1,0 +1,38 @@
+.breadcrumb-white {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+
+    background-color: #dff0d8;
+    border-radius: 4px;
+}
+
+.breadcrumb-white > li {
+    display: inline-block;
+}
+.breadcrumb-white > li + li:before {
+    padding: 0 5px;
+    /*color: #ccc;*/
+    color: #3c763d;
+    content: "/\00a0";
+}
+.breadcrumb-white > .active {
+    /*color: #999;*/
+    color: #3c763d;
+}
+
+.nobull {
+    list-style-type: none;
+}
+
+
+.divider {
+    height: 1px;
+    width: 100%;
+    display: block; /* for use on default inline elements like span */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #c2cbd4;
+}
+

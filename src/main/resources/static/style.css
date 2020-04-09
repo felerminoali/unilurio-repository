@@ -1,0 +1,233 @@
+.views-field {
+    clear: both;
+    margin: 0;
+    text-align: left;
+}
+
+.views-table tr .views-field-field-dateyear {
+    width: 5%;
+    white-space: nowrap;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-title {
+    width: 45%;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-field-download {
+    width: 25%;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-field-documents {
+    width: 25%;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-title {
+    font-weight: bold;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-title p {
+    font-weight: normal;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-field-documents {
+    font-weight: bold;
+}
+
+.view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+    position: relative;
+    min-height: 1px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+@media (min-width: 768px) {
+    .view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+        float: left;
+        width: 66.66666667%;
+    }
+}
+
+@media (min-width: 768px) {
+    .view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+        margin-left: 16.66666667%;
+    }
+}
+
+.view-oferta-formativa.view-display-id-page_1 .view-content .views-table tr .views-field-title-field {
+    vertical-align: top;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field {
+    text-align: center;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field-title-field-et, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field-title-field-et {
+    text-align: left;
+    width: 40%;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field-field-degree, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field-field-degree {
+    text-align: left;
+    width: 10%;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field {
+    text-align: center;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field-title-field-et {
+    text-align: left;
+    width: 60%;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field-field-degree {
+    text-align: left;
+    width: 10%;
+}
+
+.view-important-persons h6 {
+    min-width: 120px;
+    margin-left: 40px;
+}
+
+.view-important-persons .views-field-title-field {
+    font-weight: bold;
+    width: 40%;
+}
+
+.view-important-persons .views-field-title-field > div {
+    font-weight: normal;
+}
+
+.views-field {
+    overflow: auto;
+}
+
+.view-grupos.view-display-id-panel_pane_4 .views-field.views-field-field-body-other-et {
+    clear: both;
+}
+
+.view-grupos.view-display-id-panel_pane_4 .views-field .field-content {
+    margin: 30px 0px;
+    color: white;
+}
+
+.views-table > thead > tr > th, .table > thead > tr > th, .views-table > tbody > tr > th, .table > tbody > tr > th, .views-table > tfoot > tr > th, .table > tfoot > tr > th, .views-table > thead > tr > td, .table > thead > tr > td, .views-table > tbody > tr > td, .table > tbody > tr > td, .views-table > tfoot > tr > td, .table > tfoot > tr > td {
+    padding: 8px 20px;
+    border: none;
+}
+
+.views-table > thead > tr > th.active, .table > thead > tr > th.active, .views-table > thead > tr > th, .table > thead > tr > th {
+    background-color: #106bb1;
+    color: white;
+    font-family: "BebasNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+.views-table > thead > tr > th.active a, .table > thead > tr > th.active a, .views-table > thead > tr > th a, .table > thead > tr > th a {
+    color: white;
+}
+
+.views-table > thead > tr > th.active a:hover, .table > thead > tr > th.active a:hover, .views-table > thead > tr > th a:hover, .table > thead > tr > th a:hover {
+    color: #464646;
+}
+
+.views-table > thead > tr > th.active a img, .table > thead > tr > th.active a img, .views-table > thead > tr > th a img, .table > thead > tr > th a img {
+    display: inline-block;
+}
+
+.views-table > tbody > tr.odd, .table > tbody > tr.odd, .views-table .table-striped > tbody > tr:nth-of-type(odd), .table .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f5f5f5;
+}
+
+.views-table caption, .table caption {
+    color: #96842e;
+    text-transform: uppercase;
+    font-size: 1.25em;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f5f5f5;
+}
+
+.views-table tr .views-field-field-dateyear {
+    width: 5%;
+    white-space: nowrap;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-title {
+    width: 45%;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-field-download {
+    width: 25%;
+}
+
+.view-documents .view-content .views-table tr > th.views-field-field-documents {
+    width: 25%;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-title {
+    font-weight: bold;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-title p {
+    font-weight: normal;
+}
+
+.view-documents .view-content .views-table tr > td.views-field-field-documents {
+    font-weight: bold;
+}
+
+.view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+    position: relative;
+    min-height: 1px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+@media (min-width: 768px) {
+    .view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+        float: left;
+        width: 66.66666667%;
+    }
+}
+
+@media (min-width: 768px) {
+    .view-oferta-formativa.view-display-id-page_1 .view-content .views-table {
+        margin-left: 16.66666667%;
+    }
+}
+
+.view-oferta-formativa.view-display-id-page_1 .view-content .views-table tr .views-field-title-field {
+    vertical-align: top;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field {
+    text-align: center;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field-title-field-et, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field-title-field-et {
+    text-align: left;
+    width: 40%;
+}
+
+.view-oferta-formativa.view-display-id-page_2 .view-content .views-table tr .views-field-field-degree, .view-oferta-formativa.view-display-id-page_3 .view-content .views-table tr .views-field-field-degree {
+    text-align: left;
+    width: 10%;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field {
+    text-align: center;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field-title-field-et {
+    text-align: left;
+    width: 60%;
+}
+
+.view-oferta-formativa.view-display-id-page_4 .view-content .views-table tr .views-field-field-degree {
+    text-align: left;
+    width: 10%;
+}
