@@ -5,8 +5,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
-import com.google.api.client.http.FileContent;
-import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.*;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -71,6 +70,10 @@ public class DashboardController {
 
     private GoogleAuthorizationCodeFlow flow;
 
+
+    private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+    private static final String USER_INFO_URL = "https://www.googleapis.com/oauth2/v1/userinfo";
+
     @PostConstruct
     public void init() throws IOException {
         GoogleClientSecrets secrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(gdSecretKey.getInputStream()));
@@ -98,6 +101,28 @@ public class DashboardController {
         String redirectURL = url.setRedirectUri(CALLBACK_URI).setAccessType("offline").build();
         response.sendRedirect(redirectURL);
     }
+
+
+    /**
+     * Expects an Authentication Code, and makes an authenticated request for the user's profile information
+     * @return JSON formatted user profile information
+     * @param authCode authentication code provided by google
+     */
+    public String getUserInfoJson(final String authCode) throws IOException {
+
+        final GoogleTokenResponse response = flow.newTokenRequest(authCode).setRedirectUri(CALLBACK_URI).execute();
+        final Credential credential = flow.createAndStoreCredential(response, null);
+        final HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(credential);
+        // Make an authenticated request
+        final GenericUrl url = new GenericUrl(USER_INFO_URL);
+        final HttpRequest request = requestFactory.buildGetRequest(url);
+        request.getHeaders().setContentType("application/json");
+        final String jsonIdentity = request.execute().parseAsString();
+
+        return jsonIdentity;
+
+    }
+
 
     @GetMapping(value = "/oauth")
     public String saveAuthorazationCode(HttpServletRequest request) throws Exception {

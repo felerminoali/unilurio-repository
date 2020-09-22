@@ -15,9 +15,9 @@ $(document).ready(function () {
         var token = Cookie.get('id_token');
         Cookie.delete('access_token');
         Cookie.delete('id_token');
-        // var logoutURL = "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/logout?id_token_hint=" + token + "&post_logout_redirect_uri=" + this.redirectUri;
+        var logoutURL = "https:/unilurio-repository.herokuapp.com";
 
-        window.location.href = "/";
+        window.location.href = logoutURL;
     }
 
 
