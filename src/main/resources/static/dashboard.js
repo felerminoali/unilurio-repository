@@ -59,8 +59,8 @@ $(document).ready(function () {
 
         if(($(".logout")).length > 0){
             ($('.logout').click(function () {
-                alert("ola");
-                //logout();
+                // alert("ola");
+                logout();
             }));
         }
 
