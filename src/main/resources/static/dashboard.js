@@ -11,6 +11,16 @@ $(document).ready(function () {
 
     fill_datatable_files();
 
+    function logout() {
+        var token = Cookie.get('id_token');
+        Cookie.delete('access_token');
+        Cookie.delete('id_token');
+        // var logoutURL = "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/logout?id_token_hint=" + token + "&post_logout_redirect_uri=" + this.redirectUri;
+
+        window.location.href = "/";
+    }
+
+
     function fill_filter() {
 
         var option = '';
@@ -47,6 +57,12 @@ $(document).ready(function () {
             }
         }
 
+        if(($(".logout")).length > 0){
+            ($('.logout').click(function () {
+                alert("ola");
+                //logout();
+            }));
+        }
 
         if ($('.edit').length > 0) {
             var editBtn = document.getElementsByClassName('edit');
