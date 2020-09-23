@@ -27,6 +27,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,6 +52,9 @@ public class DashboardController {
 
     @Autowired
     private TypeRepository typeRepository;
+
+    @Autowired
+    TokenStore tokenStore;
 
     private static HttpTransport HTTP_Transport = new NetHttpTransport();
     private static JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -80,6 +85,20 @@ public class DashboardController {
         flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_Transport, JSON_FACTORY, secrets, SCOPE)
                 .setDataStoreFactory(new FileDataStoreFactory(credentialsFolder.getFile())).build();
 
+    }
+
+
+
+
+    @RequestMapping(value = "/oauth/revoke-token", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public void logout(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null) {
+            String tokenValue = authHeader.replace("Bearer", "").trim();
+            OAuth2AccessToken accessToken = tokenStore.readAccessToken(tokenValue);
+            tokenStore.removeAccessToken(accessToken);
+        }
     }
 
     @GetMapping(value = "/admin")
@@ -124,6 +143,7 @@ public class DashboardController {
     }
 
 
+
     @GetMapping(value = "/oauth")
     public String saveAuthorazationCode(HttpServletRequest request) throws Exception {
         String code = request.getParameter("code");
@@ -139,6 +159,9 @@ public class DashboardController {
     private void saveCode(String code) throws Exception {
         GoogleTokenResponse response = flow.newTokenRequest(code).setRedirectUri(CALLBACK_URI).execute();
         flow.createAndStoreCredential(response, USER_INDENTIFIER_KEY);
+
+
+        System.out.println(this.getUserInfoJson(code));
     }
 
     @GetMapping(value = "/create")
